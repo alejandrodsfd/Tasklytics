@@ -1,11 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasklytics</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    
+    <main class="container">
+        <h1>Tasklytics</h1>
+        <section id="form-section">
+            <form action="" id="task-form">
+                <input type="text" name="title" placeholder="Titulo" required>
+                <input type="text" name="priority" placeholder="Prioridad (baja/media/alta)" required>
+                <textarea name="desc" placeholder="Description"></textarea>
+                <button type="submit">Agregar tarea</button>
+            </form>
+            <div id="controls">
+                <input type="text" id="search" placeholder="Buscar...">
+                <select name="" id="filter-priority">
+                    <option value="">Todas prioridades</option>
+                    <option value="baja">baja</option>
+                    <option value="media">media</option>
+                    <option value="alta">alta</option>
+                </select>
+            </div>
+        </section>
+        <section id="stats"></section>
+        <section id="tasks-list"></section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
 </body>
+
 </html>
