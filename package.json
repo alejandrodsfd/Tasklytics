@@ -1,0 +1,26 @@
+{
+  "name": "tasklytics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejandrodsfd/Tasklytics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alejandrodsfd/Tasklytics/issues"
+  },
+  "homepage": "https://github.com/alejandrodsfd/Tasklytics#readme",
+  "description": "",
+  "devDependencies": {
+    "vitest": "^4.0.12"
+  }
+}

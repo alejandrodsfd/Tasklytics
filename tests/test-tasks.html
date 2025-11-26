@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks Core Tests</title>
+</head>
+<body>
+    <h1>Console: tests for tasks-core</h1>
+
+    <script type="module">
+        import * as Tasks from '../src/tasks.js';
+
+        function assert(cond, msg){
+            if(!cond){
+                console.error('❌ FAIL:', msg);
+                throw new Error(msg);
+            }else {
+                console.log('✅ OK:', msg);
+            }
+        }
+
+        // 1) createTask minimal
+        const t1 = Tasks.createTask({title: 'Comprar leche'});
+        assert(t1.title === "Comprar leche", 'createTask mantiene título');
+        assert(t1.completed === false, 'createTask default completed false');
+        assert(typeof t1.id === 'string', 'createTask genera id');
+
+        // 2) addTask / immutabilidad
+        const arr0 = [];
+        const arr1 = Tasks.addTask(arr0, t1);
+        assert(arr1.length === 1 && arr0.length === 0, 'addTask no muta array original');
+
+        // 3) toggleComplete
+        const arr2 = Tasks.toggleComplete(arr1, t1.id);
+        assert(arr2[0].completed === true, 'toggleComplete marca completa');
+        const arr3 = Tasks.toggleComplete(arr2, t1.id);
+        assert(arr3[0].completed === false, 'toggleComplete alterna');
+
+        // 4) removeTask
+        const arr4 = Tasks.removeTask(arr3, t1.id);
+        assert(arr4.length === 0, 'removeTask elimina elemento');
+
+        // 5) updateTask
+        const tA = Tasks.createTask({ title: 'Tarea A'});
+        const list = Tasks.addTask([], tA);
+        const listUpdated = Tasks.updateTask(list, tA.id, {title: 'Tarea A editada', priority: 'alta'});
+        assert(listUpdated[0].title === 'Tarea A editada' && listUpdated[0].priority === 'alta', 'updateTask aplica updates');
+
+        console.log('Todas las pruebas simples finalizaron correctamente.');
+    </script>
+</body>
+</html>
